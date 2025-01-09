@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/preview-html/script.js"></script>
+    <title>Document</title>
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <main class="flex flex-col gap-4">
+      <h1 class="text-4xl font-bold">Welcome to preview page!</h1>
+      <p>Here is try to open in iframe</p>
+      <a href="http://localhost:5173" class="btn btn-link"
+        >click me to redirect main-app</a
+      >
+      <button class="btn btn-primary" onclick="clickHandler()">
+        Click to alert
+      </button>
+    </main>
+    <div
+      id="svelte-announcer"
+      aria-live="assertive"
+      aria-atomic="true"
+      style="
+        position: absolute;
+        left: 0;
+        top: 0;
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        overflow: hidden;
+        white-space: nowrap;
+        width: 1px;
+        height: 1px;
+      "
+    ></div>
+    <script>
+      function clickHandler() {
+        alert("123");
+      }
+    </script>
+    <style>
+      h1,
+      p {
+        margin: 0;
+      }
+      main {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+    </style>
+  </body>
+</html>

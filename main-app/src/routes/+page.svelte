@@ -20,7 +20,6 @@
 	onMount(() => {
 		if (window) {
 			window.addEventListener('message', (event) => {
-				console.log('event', event);
 				// type: 'select-element-end'
 				if (event.data.type === 'select-element-end') {
 					toggleFullscreen(false);
@@ -82,7 +81,7 @@
 		<div class="h-full w-full border-t border-base-300">
 			<iframe
 				bind:this={iframeDom}
-				src="http://localhost:5174"
+				src="http://localhost:5501/preview-html/index.html"
 				title="preview page"
 				class="h-full w-full bg-[#fff] pb-12"
 			>
