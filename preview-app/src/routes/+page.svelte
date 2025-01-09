@@ -2,7 +2,6 @@
 	import { onMount } from 'svelte';
 
 	function iframeClickListener(event: MouseEvent) {
-		console.log('iframeClickListener');
 		const mouseEvent = event;
 		event.stopPropagation(); // prevent js
 		event.preventDefault(); // prevent a link
@@ -26,11 +25,10 @@
 
 				if (event.data.type === 'select-element-start') {
 					window.document.body.addEventListener('click', iframeClickListener, true);
-					// 回應消息給父頁面
-					// window.parent.postMessage(
-					// 	{ type: 'select-element-end', message: 'Hello from preview page' },
-					// 	'*'
-					// );
+				}
+				if (event.data.type === 'select-element-finish') {
+					alert('finish select');
+					window.document.body.removeEventListener('click', iframeClickListener, true);
 				}
 			});
 		}

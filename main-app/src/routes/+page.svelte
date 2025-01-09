@@ -10,21 +10,8 @@
 	}
 	function setSelect(bool: boolean) {
 		isStartSelect = bool;
-	}
 
-	// onMount(() => {
-	// 	window.addEventListener('message', (event) => {
-	// 		if (event.data.type === 'select-element-end') {
-	// 			const data = JSON.stringify({
-	// 				tagName: event.data.tagName,
-	// 				classList: event.data.classList,
-	// 				outerHTML: event.data.outerHTML,
-	// 				id: event.data.id
-	// 			});
-	// 			message = data;
-	// 		}
-	// 	});
-	// });
+	}
 
 	$effect(() => {
 		console.log('message', message);
@@ -45,6 +32,13 @@
 						id: event.data.id
 					});
 					message = data;
+
+					if (iframeDom && iframeDom?.contentWindow) {
+						iframeDom?.contentWindow.postMessage(
+							{ type: 'select-element-finish', message: 'finish selected' },
+							'*'
+						);
+					}
 				}
 			});
 		}
